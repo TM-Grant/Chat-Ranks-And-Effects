@@ -4,7 +4,7 @@ import { ModalFormData, ActionFormData } from "@minecraft/server-ui";
 world.afterEvents.itemUse.subscribe((data) => {
     const item = data.itemStack
     const player = data.source
-    if (item.typeId === 'minecraft:clock') {
+    if (item.typeId === 'minecraft:YOUR_ITEM') {
         cosmeticsForm(player)
     }
 })
