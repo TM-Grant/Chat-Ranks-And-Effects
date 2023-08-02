@@ -40,7 +40,7 @@ async function chatRanksCosmetics(player) {
             player.getTags().map((tag) => {
                 if (tag.startsWith("rank:")) {
                     player.removeTag("rank:" + tag)
-                    player.addTag(r.formValues[0])
+                    player.addTag("rank:" + r.formValues[0])
                 }
             })
         })
