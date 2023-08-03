@@ -86,11 +86,20 @@ system.runInterval(() => {
  * @returns {String} String
  */
 function getPlayerRanks(player) {
-    player.getTags().map((tag) => {
-        if (tag.startsWith("rank:")) {
-            tag.replace("§k", "")
-        }
+  let rank_prefix = "rank:";
+  let default_rank = "YOUR DEFAULT RANK";
+  const ranks = player
+    .getTags()
+    .map((tags) => {
+      if (!tags.startsWith(rank_prefix)) return null;
+      return tags
+        .substring(rank_prefix.length)
+        .replace("§k", "")
+        .replace("§l", "")
+        .replace("§o", ""); //§r
     })
+    .filter((tag) => tag);
+  return ranks.length == 0 ? [default_rank] : ranks;
 }
 
 world.beforeEvents.chatSend.subscribe((data) => {
